@@ -1,0 +1,24 @@
+CROSS_HOST="x86_64-pc-cygwin"
+inherit cross
+
+NAME="cygwin64-catgets"
+VERSION=1.1
+RELEASE=2
+CATEGORY="Text"
+SUMMARY="catgets API for Cygwin 64bit toolchain"
+HOMEPAGE="http://www.gnu.org/software/libc/"
+SRC_URI="catgets-${VERSION}.tar.bz2"
+SRC_DIR="catgets-${VERSION}"
+PATCH_URI="1.1-cygwin.patch 1.1-cross-binutils.patch"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	cygmake CC=${CC} CCLD=${CC} AR=${AR} OSTYPE=cygwin
+}
+
+src_install() {
+	cd ${B}
+	cygmake install DESTDIR=${D}${CROSS_SYSROOT}
+	rm -f ${D}${CROSS_BINDIR}/*.exe
+}
