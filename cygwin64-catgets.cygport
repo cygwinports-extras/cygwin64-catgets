@@ -4,7 +4,7 @@ inherit cross
 NAME="cygwin64-catgets"
 VERSION=1.1
 RELEASE=2
-CATEGORY="Text"
+CATEGORY="Devel"
 SUMMARY="catgets API for Cygwin 64bit toolchain"
 HOMEPAGE="http://www.gnu.org/software/libc/"
 SRC_URI="catgets-${VERSION}.tar.bz2"
